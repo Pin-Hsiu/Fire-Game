@@ -12,10 +12,13 @@ public class LineWalk : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.name == "RightSide") 
+		if (other.gameObject.name == "RightSide" || other.gameObject.name =="FrontSide") 
 		{
 			transform.Rotate (0, -90, 0);
+
 		}
+
+
 	}
 
 
