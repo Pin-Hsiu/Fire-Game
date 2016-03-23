@@ -11,7 +11,7 @@ public class RandomWalk : MonoBehaviour {
 		float time=0;
 
 
-		for (time = 0; time < 10000F; time += 10*Time.deltaTime) {
+		for (time = 0; time < 11111; time += 10*Time.deltaTime) {
 
 			float i = Random.Range (-2F, 2F);
 				gameObject.transform.Translate (i*Time.deltaTime, 0, 0);
