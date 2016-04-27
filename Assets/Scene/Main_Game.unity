@@ -1289,12 +1289,11 @@ GameObject:
   - 4: {fileID: 168214358}
   - 198: {fileID: 168214357}
   - 199: {fileID: 168214356}
-  - 114: {fileID: 168214359}
   - 136: {fileID: 168214360}
   - 95: {fileID: 168214361}
   m_Layer: 0
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2851,19 +2850,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
---- !u!114 &168214359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 168214355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15099f5ee559584089d5851df572def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.3
-  attackDamage: 10
 --- !u!136 &168214360
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7602,7 +7588,7 @@ MonoBehaviour:
   damageImage: {fileID: 524790511}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  flashColour: {r: 0.034482718, g: 1, b: 0, a: 0.1}
 --- !u!82 &519623706
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7688,6 +7674,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8184391a2d0f884d9a55fc36425e558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &519623708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519623700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15099f5ee559584089d5851df572def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.5
+  attackDamage: 10
 --- !u!1 &524790509
 GameObject:
   m_ObjectHideFlags: 0
@@ -7965,11 +7964,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 544103452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86342cef2fc483348bf1db382d798517, type: 3}
+  m_Script: {fileID: 11500000, guid: 44a34a7f5fc129b42b85a4f94d64c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bloodBar: {fileID: 1729434266}
-  offset: {x: 0, y: 20, z: 0}
+  offset: {x: 750, y: 350, z: 100}
 --- !u!225 &544103454
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10435,7 +10434,7 @@ GameObject:
   - 224: {fileID: 816015211}
   - 114: {fileID: 816015212}
   m_Layer: 5
-  m_Name: HealthSlider
+  m_Name: HealthSlider(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11582,7 +11581,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 183810, guid: 244e2e913df9ec8488fa7bd90d85eb8e, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: player2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 244e2e913df9ec8488fa7bd90d85eb8e, type: 2}
@@ -18394,7 +18393,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1729434267}
   m_Layer: 5
-  m_Name: HealthUI
+  m_Name: HealthUI(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19276,7 +19275,7 @@ GameObject:
   - 222: {fileID: 1788485074}
   - 114: {fileID: 1788485073}
   m_Layer: 5
-  m_Name: DamageImage
+  m_Name: DamageImage(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19983,6 +19982,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1876840107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876840098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a038c0ec0f088f47a35d0b1b392eb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.5
+  attackDamage: 10
 --- !u!1 &1882452653
 GameObject:
   m_ObjectHideFlags: 0
@@ -22235,7 +22247,7 @@ GameObject:
   - 222: {fileID: 2137858601}
   - 114: {fileID: 2137858600}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: Heart(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
