@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-    void OnTriggerEnter (Collider other)
+    void OnTriggerStay (Collider other)
     {
         if(other.gameObject == fire)
         {
