@@ -4,6 +4,8 @@ using System.Collections;
 public class NavWalk : MonoBehaviour {
 
 	GameObject buildelement;
+	GameObject buildelement1;
+	GameObject buildelement2;
 	int direction; 
 	GameObject model;
 	public const int Obstacle_DISTANCE = 13;
@@ -18,7 +20,8 @@ public class NavWalk : MonoBehaviour {
 		model = GameObject.Find("suitF01"); 
 		direction= Random.Range(0, 4);
 		buildelement = GameObject.Find("Lamp");
-
+		buildelement1 = GameObject.Find("Lamp(1)");
+		buildelement2 = GameObject.Find("Lamp(2)");
 	}
 
 
@@ -30,15 +33,61 @@ public class NavWalk : MonoBehaviour {
 
 	void Update () 
 	{
+		
 		int s;
 		if (Vector3.Distance (transform.position, buildelement.transform.position) <
 		    (Obstacle_DISTANCE)) {
-			for (s = 0; s < 10; s++) {
-				model.transform.Translate(0,0,-0.3f *s*Time.deltaTime);
+			if (model.transform.position.x <= -45) {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
+				direction = 3;
 			}
+			else {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
 
-			direction = 2;
+				direction = 2;
+			}
 		}
+
+		if (Vector3.Distance (transform.position, buildelement1.transform.position) <
+			(Obstacle_DISTANCE)) {
+			if (model.transform.position.x <= -45) {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
+				direction = 3;
+			}
+			else {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
+
+				direction = 2;
+			}
+		}
+
+		if (Vector3.Distance (transform.position, buildelement2.transform.position) <
+			(Obstacle_DISTANCE)) {
+			if (model.transform.position.x <= -45) {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
+				direction = 3;
+			}
+			else {
+				for (s = 0; s < 10; s++) {
+					model.transform.Translate (0, 0, -0.3f * s * Time.deltaTime);
+				}
+
+				direction = 2;
+			}
+		}
+
+
+
 
 
 
