@@ -19,7 +19,7 @@ public class Attack2 : MonoBehaviour
 	void Awake ()
 	{
 		fire = GameObject.FindGameObjectWithTag ("fire");
-		player = GameObject.FindGameObjectWithTag ("player2");
+		player = GameObject.FindGameObjectWithTag ("player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
 		//enemyHealth = GetComponent<EnemyHealth>();
 		anim = GetComponent <Animator> ();
