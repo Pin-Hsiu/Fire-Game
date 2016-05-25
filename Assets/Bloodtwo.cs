@@ -10,7 +10,7 @@ public class Bloodtwo : MonoBehaviour {
 
 	void Awake ()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player1");
+		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	void Start () {
 

@@ -3,48 +3,47 @@ using System.Collections;
 
 public class NavWalk : MonoBehaviour {
 
-	 GameObject build;
-	//GameObject buildelement1;
-	//GameObject buildelement2;
-	int direction; 
-	//int directions;
-	GameObject model;
-	public const int Obstacle_DISTANCE = 13;
-	//GameObject models;
 
+	int direction; 
+    GameObject model;
+	public const int Obstacle_DISTANCE = 13;
+	public int walktype= 0;
+	public Transform target;
+	private NavMeshAgent navMeshAgent;
 
 
 	void Awake ()
 	{
-		model = GameObject.FindGameObjectWithTag ("Player"); 
-		build = GameObject.FindGameObjectWithTag("buildelement");
+		model = this.gameObject; 
+		//target = GameObject.Find("Target");
 	}
 
 	void Start () 
 	{
-
-
-			
-			//models = GameObject.Find ("suitman(Clone)"); 
-	
-		direction= Random.Range(0, 4);
-		//directions= Random.Range(0, 4);
-
-		//buildelement1 = GameObject.Find("Lamp(1)");
-		//buildelement2 = GameObject.Find("Lamp(2)");
+		if (walktype == 1) {
+			direction = Random.Range (0, 4);
+		}
+		walktype = 2;
+		Debug.Log ("time");
+		navMeshAgent = GetComponent<NavMeshAgent>();
 	}
 
 
 	void awake(){
-		//model = GameObject.FindGameObjectWithTag ("Player");
+		
 	}
 
 
 
 
 
-	void Update () 
+	void Update ()
 	{
+
+		//Debug.Log (model.name + " : " + walktype);
+		switch (walktype)
+		{
+		case 1:
 		/*邊緣躲避走法:
 		一開始任意選上下左右一個方向走
 		遇到障礙物的話會繞開他再恢復原來走的方向
@@ -55,202 +54,47 @@ public class NavWalk : MonoBehaviour {
 			行走方向為右，會往上繞開
 		)*/
 
-		 if(direction == 0 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-			    (Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, 0.3f);
-			} 
-			/*else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, 0.3f);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, 0.3f);
-			} */
-			else {
+			if (direction == 0) {
 				model.transform.Translate (0.3f, 0, 0);
-				if (model.transform.position.x >= 50) {
+				if (model.transform.position.x >= 48) {
 					direction = 1; 
 				}
-			}
-		}
-
-
-
-		if (direction == 1 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-			    (Obstacle_DISTANCE)) {
-				model.transform.Translate (-0.3f, 0,0);
-			} 
-			/*else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (-0.3f, 0,0);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (-0.3f, 0,0);
-			} */
-			else {
+			} else if (direction == 1) {
 				model.transform.Translate (0, 0, 0.3f);
 
-				if (model.transform.position.z >= 50) {
+				if (model.transform.position.z >= 48) {
 					direction = 2; 
 				}
-			}
-		}
-
-
-		if (direction == 2 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-			    (Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, -0.3f);
-			}
-			/*else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, -0.3f);
-			}
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0, 0, -0.3f);
-			}*/
-			else {
+			} else if (direction == 2) {
 				model.transform.Translate (-0.3f, 0, 0);
 
-				if (model.transform.position.x <= -50) {
+				if (model.transform.position.x <= -48) {
 					direction = 3;
 				}
-			}
-		}
-
-
-
-		if (direction == 3 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-			    (Obstacle_DISTANCE)) {
-				model.transform.Translate (0.3f, 0, 0);
-			}
-			/*else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0.3f, 0, 0);
-			}
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				model.transform.Translate (0.3f, 0, 0);
-			}*/
-			else {
+			} else {
 				model.transform.Translate (0, 0, -0.3f);
 
-				if (model.transform.position.z <= -50) {	
+				if (model.transform.position.z <= -48) {	
 					direction = 0; 
 				}
 			}
+			break;
+
+		case 2:
+
+			navMeshAgent.destination = target.position;
+
+			break;
+
+
+		default:
+			model.transform.Translate (0, 0, -0.3f);
+			break;
+
+
+
+
+
 		}
-
-
-
-		/*if(directions == 0 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, 0.3f);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, 0.3f);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, 0.3f);
-			} 
-			else {
-				models.transform.Translate (0.3f, 0, 0);
-				if (models.transform.position.x >= 50) {
-					directions = 1; 
-				}
-			}
-		}
-
-
-
-		if (directions == 1 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (-0.3f, 0,0);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (-0.3f, 0,0);
-			} 
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (-0.3f, 0,0);
-			} 
-			else {
-				models.transform.Translate (0, 0, 0.3f);
-
-				if (models.transform.position.z >= 50) {
-					directions = 2; 
-				}
-			}
-		}
-
-
-		if (directions == 2 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, -0.3f);
-			}
-			else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, -0.3f);
-			}
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0, 0, -0.3f);
-			}
-			else {
-				models.transform.Translate (-0.3f, 0, 0);
-
-				if (models.transform.position.x <= -50) {
-					directions = 3;
-				}
-			}
-		}
-
-
-
-		if (directions == 3 ) 
-		{
-			if (Vector3.Distance (transform.position, build.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0.3f, 0, 0);
-			}
-			else if (Vector3.Distance (transform.position, buildelement1.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0.3f, 0, 0);
-			}
-			else if (Vector3.Distance (transform.position, buildelement2.transform.position) <
-				(Obstacle_DISTANCE)) {
-				models.transform.Translate (0.3f, 0, 0);
-			}
-			else {
-				models.transform.Translate (0, 0, -0.3f);
-
-				if (models.transform.position.z <= -50) {	
-					directions = 0; 
-				}
-			}
-		}*/
-
-
 	}
-
-
 } 

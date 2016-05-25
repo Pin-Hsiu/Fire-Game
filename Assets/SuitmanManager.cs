@@ -8,15 +8,20 @@ public class SuitmanManager : MonoBehaviour {
 	
 		public PlayerHealth playerHealth;       // Reference to the player's heatlh.
 		public GameObject Suitman;                // The enemy prefab to be spawned.
-		public float spawnTime = 5f;            // How long between each spawn.
+		public float spawnTime = 3f;            // How long between each spawn.
 		public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-
+	    public int number = 0; 
 
 
 		void Start ()
 		{
-			// Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-		Invoke ("Spawn", spawnTime);
+		
+		int i = 0;
+		//for (i = 0; i < number; i++) {
+		//	Invoke ("Spawn", spawnTime);
+		//}
+		Invoke ("Spawn", 0f);
+		Invoke ("Spawn", 0f);
 		}
 
 
