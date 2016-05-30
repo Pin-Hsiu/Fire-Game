@@ -7,30 +7,36 @@ public class NavWalk : MonoBehaviour {
 	int direction; 
     GameObject model;
 	public const int Obstacle_DISTANCE = 13;
-	public int walktype= 0;
-	public Transform target;
+	public int walktype=1;
+	//public Transform target;
 	private NavMeshAgent navMeshAgent;
-
+	GameObject target;
+	GameObject model1;
+	private NavWalk walkscript;
 
 	void Awake ()
 	{
 		model = this.gameObject; 
-		//target = GameObject.Find("Target");
+		target = GameObject.Find("Target");
+		//model1 = GameObject.Find("suitman");
+
 	}
 
 	void Start () 
 	{
-		if (walktype == 1) {
+		
 			direction = Random.Range (0, 4);
-		}
-		walktype = 2;
-		Debug.Log ("time");
+		
+			//Debug.Log ("time");
 		navMeshAgent = GetComponent<NavMeshAgent>();
+		walkscript = GameObject.Find("suitman").GetComponent<NavWalk>() ;
+
 	}
 
 
 	void awake(){
 		
+
 	}
 
 
@@ -39,10 +45,12 @@ public class NavWalk : MonoBehaviour {
 
 	void Update ()
 	{
+		int alltype = walkscript.walktype;
 
-		//Debug.Log (model.name + " : " + walktype);
-		switch (walktype)
+		//Debug.Log (model.name + " : " + alltype);
+		switch (alltype)
 		{
+
 		case 1:
 		/*邊緣躲避走法:
 		一開始任意選上下左右一個方向走
@@ -82,13 +90,16 @@ public class NavWalk : MonoBehaviour {
 
 		case 2:
 
-			navMeshAgent.destination = target.position;
+			navMeshAgent.destination = target.transform.position;
 
 			break;
 
 
 		default:
 			model.transform.Translate (0, 0, -0.3f);
+			if (model.transform.position.z <= -50) {	
+				Destroy (model);
+			}
 			break;
 
 

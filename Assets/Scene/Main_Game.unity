@@ -11717,7 +11717,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11477772, guid: 244e2e913df9ec8488fa7bd90d85eb8e, type: 2}
       propertyPath: walktype
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11477772, guid: 244e2e913df9ec8488fa7bd90d85eb8e, type: 2}
       propertyPath: target
