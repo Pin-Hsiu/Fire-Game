@@ -17,22 +17,19 @@ public class SuitmanManager : MonoBehaviour {
 		{
 		
 		int i = 0;
-		//for (i = 0; i < number; i++) {
-		//	Invoke ("Spawn", spawnTime);
-		//}
-		Invoke ("Spawn", 0f);
-		Invoke ("Spawn", 0f);
+		for (i = 0; i < number; i++) {
+			Invoke ("Spawn", spawnTime);
+		}
+		//Invoke ("Spawn", 0f);
+		//Invoke ("Spawn", 0f);
+
 		}
 
 
 		void Spawn ()
 		{
 			// If the player has no health left...
-			if(playerHealth.currentHealth <= 0f)
-			{
-				// ... exit the function.
-				return;
-			}
+			
 
 			// Find a random index between zero and one less than the number of spawn points.
 			int spawnPointIndex = Random.Range (0, spawnPoints.Length);

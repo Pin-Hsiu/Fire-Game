@@ -13,6 +13,9 @@ public class NavWalk : MonoBehaviour {
 	GameObject target;
 	GameObject model1;
 	private NavWalk walkscript;
+	public Transform[] points;
+	private int destpoint = 0;
+
 
 	void Awake ()
 	{
@@ -30,6 +33,12 @@ public class NavWalk : MonoBehaviour {
 			//Debug.Log ("time");
 		navMeshAgent = GetComponent<NavMeshAgent>();
 		walkscript = GameObject.Find("suitman").GetComponent<NavWalk>() ;
+
+		if (walkscript.walktype == 3) {
+			navMeshAgent.autoBraking = false;
+			GotoNext ();
+		}
+
 
 	}
 
@@ -94,6 +103,10 @@ public class NavWalk : MonoBehaviour {
 
 			break;
 
+		case 3:
+			if (navMeshAgent.remainingDistance < 0.5f)
+				GotoNext ();
+			break;
 
 		default:
 			model.transform.Translate (0, 0, -0.3f);
@@ -108,4 +121,16 @@ public class NavWalk : MonoBehaviour {
 
 		}
 	}
+
+	void GotoNext(){
+		if (walkscript.points.Length == 0) {
+			return;
+		}
+		navMeshAgent.destination = walkscript.points [destpoint].position;
+		destpoint = (destpoint + 1) % walkscript.points.Length;
+	}
+
+
+
+
 } 
