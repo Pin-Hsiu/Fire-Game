@@ -126,7 +126,7 @@ public class NavWalk : MonoBehaviour {
 		if (walkscript.points.Length == 0) {
 			return;
 		}
-		navMeshAgent.destination = walkscript.points [destpoint].position;
+		navMeshAgent.destination = new Vector3(0,0,0) ;
 		destpoint = (destpoint + 1) % walkscript.points.Length;
 	}
 

@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent <PlayerMovement> ();
         //playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
+		//damageImage = GetComponent<Image>();// GetComponent <Image> ();
     }
 
 
@@ -42,6 +43,8 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+
+			//Debug.Log (Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime));
         }
         damaged = false;
     }

@@ -1066,10 +1066,10 @@ GameObject:
   - 136: {fileID: 13667870}
   - 135: {fileID: 13543548}
   - 82: {fileID: 8250932}
-  - 195: {fileID: 19509920}
   - 114: {fileID: 11477772}
   - 114: {fileID: 11430660}
   - 114: {fileID: 11425732}
+  - 195: {fileID: 19521722}
   m_Layer: 0
   m_Name: suitman
   m_TagString: Player
@@ -2484,6 +2484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270f301b7564cdd41806258098c573a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walktype: 3
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!135 &13543548
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2731,7 +2736,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000048674643, y: 0.000020444393, z: 0.000044500455}
     m_Extent: {x: 0.013810653, y: 0.012478414, z: 0.0131204}
   m_DirtyAABB: 0
---- !u!195 &19509920
+--- !u!195 &19521722
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2739,8 +2744,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 183810}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 15
+  m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
